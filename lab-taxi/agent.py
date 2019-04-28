@@ -2,7 +2,6 @@ import numpy as np
 from collections import defaultdict
 
 class Agent:
-
     def __init__(self, nA=6):
         """ Initialize agent.
 
@@ -11,7 +10,10 @@ class Agent:
         - nA: number of actions available to the agent
         """
         self.nA = nA
+        self.alpha = .03 # Learning rate
+        self.gamma = 1
         self.Q = defaultdict(lambda: np.zeros(self.nA))
+
 
     def select_action(self, state):
         """ Given the state, select an action.
@@ -24,7 +26,9 @@ class Agent:
         =======
         - action: an integer, compatible with the task's action space
         """
-        return np.random.choice(self.nA)
+
+        return np.random.choice(np.arange(self.nA),
+                                p=self.softmax(self.Q[state]))
 
     def step(self, state, action, reward, next_state, done):
         """ Update the agent's knowledge, using the most recently sampled tuple.
@@ -37,4 +41,12 @@ class Agent:
         - next_state: the current state of the environment
         - done: whether the episode is complete (True or False)
         """
-        self.Q[state][action] += 1
+        Q_next = self.Q[next_state][self.select_action(next_state)]
+        self.Q[state][action] = (1-self.alpha) *self.Q[state][action] +\
+            self.alpha * (reward + self.gamma * Q_next)
+
+
+    @staticmethod
+    def softmax(L):
+        L = np.asarray(L)
+        return np.exp(L)/np.sum(np.exp(L))
