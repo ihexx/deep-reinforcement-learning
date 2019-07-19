@@ -1,8 +1,31 @@
 [//]: # (Image References)
 
 [image1]: https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif "Trained Agent"
+# TODO
+ 
+ - [ ] Unity Rollout
+ - [ ] Agent import and basic functionality
+ - [ ] tensorboardX
+ - [ ] Stages & Ablation
+ - [ ] Save model
+ - [ ] Writeup
+ - [ ] Cleanup
+
+# RL Algorithm
+The algorithm used is:
+- [ ] DQN with GLIE epsilon greedy policy
+- [ ] Softmax energy based policy [arXiv:1702.08165](https://arxiv.org/abs/1702.08165) (conflicts with GLIE epsilon greedy)
+- [ ] Max-Entropy objective (Soft Q-Learning)  [arXiv:1702.08165](https://arxiv.org/abs/1702.08165) 
+- [ ] Automatic temperature tuning of Max-Entropy objective (based on SOft Actor-Critic) [arXiv:1812.11103](https://arxiv.org/abs/1812.11103)
+- [ ] Double Q-learning [arXiv:1509.06461](https://arxiv.org/abs/1509.06461)
+- [ ] Dueling Network Architecture [arXiv:1511.06581](https://arxiv.org/abs/1511.06581)
+- [ ] Prioritised Experience Replay (PER) [arXiv:1511.05952](https://arxiv.org/abs/1511.05952)
+- [ ] Emphasizing Recent Experience Replay Buffer (ERE) (conflicts with PER) [arXiv:1906.04009](https://arxiv.org/abs/1906.04009)
+
 
 # Project 1: Navigation
+
+
 
 ### Introduction
 
